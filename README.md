@@ -1,2 +1,2 @@
-# log_module
-log for c++
+# log
+log model for c++
