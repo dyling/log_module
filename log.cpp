@@ -5,10 +5,9 @@
 // #include <dirent.h>
 
 
-#include "../simpro_function_safety/Runtime/Vissim/VissimTcpServer/VissimTcpServer/VissimTcpComm.h"
 
 
-const std::string log_root_path = "/home/saimo/dyling/git_lib/log/logs/";
+const std::string log_root_path = "log";
 
 
 bool is_print_log(int l)
@@ -397,3 +396,32 @@ void LOG_MODULE::clear_file()
 
 }
 
+
+/**
+ * @brief struct timespec turn to string include date and time
+ * 
+ * @param ts: input struct timespec value which could get by function clock_gettime()
+ * @param time_string: output like. 2022-01-14 11:26:28.747260
+ * @param max_len: the max value of time_string memory length
+ */
+void timespec2timeinfo(const struct timespec ts, char *time_string, const std::size_t max_len)
+{
+    struct tm timeinfo = { 0 };
+
+    if (NULL == time_string || 0 >= max_len)
+    {
+        return;
+    }
+
+#if defined(WIN32) || defined(_WIN32)
+    localtime_s(&timeinfo, &ts.tv_sec);
+#else
+    localtime_r(&ts.tv_sec, &timeinfo);
+#endif
+
+    memset(time_string, 0, max_len);
+
+    snprintf(time_string, max_len, "%.4d-%.2d-%.2d %.2d:%.2d:%.2d.%.3ld"
+            , timeinfo.tm_year + 1900, timeinfo.tm_mon + 1, timeinfo.tm_mday
+            , timeinfo.tm_hour, timeinfo.tm_min, timeinfo.tm_sec, ts.tv_nsec / 1000);
+}
