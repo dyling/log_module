@@ -16,7 +16,6 @@
 #include <boost/filesystem.hpp>
 
 
-
 /********************************************** 宏定义 ******************************************************/
 
 
@@ -126,6 +125,7 @@ void print_into_file_s(const std::string s);
 void print_into_file_c(const char * p, ...);
 const char * level_info(int l);
 
+void timespec2timeinfo(const struct timespec ts, char *time_string, const std::size_t max_len);
 
 class LOG_MODULE
 {
@@ -137,7 +137,7 @@ private:
     std::vector<std::string> file_name_list;
     std::string _log_root_path;
 
-    char date_time_info[50] = {0};
+    char date_time_info[50];
 
 public:
     LOG_MODULE();
