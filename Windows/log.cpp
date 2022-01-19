@@ -1,7 +1,7 @@
 /**
  * @file log.h
  * @author duanyanling@saimo.ai
- * @brief ÈÕÖ¾Ïà¹Ø¶¨Òå
+ * @brief æ—¥å¿—ç›¸å…³å®šä¹‰
  * @version 0.1
  * @date 2022-01-12
  * 
@@ -12,10 +12,6 @@
 #include "log.h"
 #include <boost/filesystem.hpp>
 #include <winsock.h>
-// #include "VissimTcpComm.h"
-// #include <string>
-// #include <string.h>
-// #include <dirent.h>
 #include <locale>
 #include <codecvt>
 
@@ -379,7 +375,7 @@ void LOG_MODULE::check_file_num()
 
     if (true == boost::filesystem::exists(del_file_path))
     {
-        if(true == boost::filesystem::is_regular_file(del_file_path))	//ÍÆ¶ÏÊÇ·ñÎªÆÕÍ¨ÎÄ¼ş
+        if(true == boost::filesystem::is_regular_file(del_file_path))	//æ¨æ–­æ˜¯å¦ä¸ºæ™®é€šæ–‡ä»¶
         {
             boost::filesystem::remove(del_file_path);
         }
