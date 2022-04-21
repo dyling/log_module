@@ -26,7 +26,6 @@
 #define PRINT_INTO_FILE     true
 
 
-
 // Copy from Common.h
 #ifndef COMMON_H
 #define COMMON_H
@@ -60,8 +59,6 @@
 #endif // COMMON_H
 
 
-
-
 #define DYL_LOG(l, s) \
     do              \
     {                   \
@@ -73,7 +70,6 @@
             }           \
         }               \
     } while (false);
-    
 
 
 #define DEBUG(l, format, ...) \

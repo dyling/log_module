@@ -1,9 +1,7 @@
-
 #include "./log.h"
 // #include <string>
 // #include <string.h>
 // #include <dirent.h>
-
 
 
 
