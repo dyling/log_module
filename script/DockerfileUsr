@@ -1,0 +1,26 @@
+# 基础镜像
+FROM ubuntu20.04:0108
+
+# 维护者信息（可选）
+LABEL maintainer="dyling@cisaitech.com"
+
+# 设置默认工作目录
+WORKDIR /app
+
+# RUN apt update && \
+#     apt install -y --no-install-recommends   \
+#     vim  && \
+#     apt clean && \
+#     rm -rf /var/lib/apt/lists/*
+
+# 复制本地depend目录到 /opt 并创建windows 不支持的软连接文件 
+COPY depend /opt/depend
+RUN cd /opt/depend/qt_install/lib \
+    && ln -s libQt5Network.so.5.14.2 libQt5Network.so.5 \
+    && ln -s libQt5Core.so.5.14.2 libQt5Core.so.5 \
+    && ln -s libQt5SerialBus.so.5.14.2   libQt5SerialBus.so.5 \
+    && ln -s libQt5SerialPort.so.5.14.2 libQt5SerialPort.so.5 \
+    && ln -s libQt5Sql.so.5.14.2 libQt5Sql.so.5 
+
+# 设置容器启动默认命令
+CMD ["/bin/bash"]

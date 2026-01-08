@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  ws_control_robot:
+    image: robot:0108
+    tty: true
+    stdin_open: true
+    container_name: ws_control_robot
+    working_dir: /root
+    ports:
+      - "2223:22"
+    volumes:
+      - D:\workspace:/root/workspace
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+    command: bash
